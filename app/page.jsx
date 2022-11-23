@@ -10,13 +10,15 @@ export default function Page() {
     useEffect(() => {
         video.current.playbackRate = 0.7;
         setLogo(true);
+        window.addEventListener('scroll', () => {
+            document.body.style.cssText = `--scrollTop: ${window.scrollY}px`;
+        });
     }, []);
 
     const changeBackground = () => {
         if (window.scrollY >= 1) {
             setLogo(false);
             setAbout(true);
-            console.log(about);
         } else {
             setLogo(true);
             setAbout(false);
