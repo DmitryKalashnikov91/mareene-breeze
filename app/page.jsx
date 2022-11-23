@@ -22,7 +22,9 @@ export default function Page() {
             setAbout(false);
         }
     };
-    window.addEventListener('scroll', changeBackground);
+    if (typeof window !== 'undefined') {
+        window.addEventListener('scroll', changeBackground);
+    }
 
     return (
         <>
