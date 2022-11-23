@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Roboto;
+  src: url("/fonts/Roboto.ttf");
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/fonts/Robotobold.ttf");
+  font-weight: bold;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 200%;
+  max-width: 100vw;
+   font-family: 'Roboto', sans-serif, Helvetica Neue, sans-serif;
+    background-color: rgb(5, 44, 69);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.intro__media {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.intro__media video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.intro__content {
+  width: 370px;
+  height: 220px;
+  position: relative;
+  caret-color: transparent;
+  display: flex;
+  left: 30vw;
+  justify-content: center;
+  margin-top: 30vh;
+  z-index: 10;
+  color: bisque;
+  text-align: center;
+  transform: translate(0px, 100%);
+  opacity: 0;
+  transition: all 1s ease .5s;
+}
+.intro__content.active{
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+.intro__navigate {
+  position: absolute;
+    position: fixed;
+    right: 5%  ;   
+    z-index: 10;
+    top: 5%;
+}
+
+.intro__navigate li {
+  transition: all 400ms;
+}
+.intro__navigate li:hover {
+  transform: scale(1.2);
+}
+
+.intro__about {
+  padding: 5% 15%;
+  font-weight: bold;
+  opacity: 0;
+  transition: all 1s ease .5s;
+}
+
+.intro__about.active {
+  opacity: 1;
+} 
+
+@media (max-width: 600px) {
+  .intro__navigate ul {
+    display: block;
+  }
+  .intro__navigate li {
+    padding-bottom: 0.8rem;
+  }
+  .intro__content  {
+    left: 20%;
+    max-width: 250px;
+    height: 150px;
+  }
+  .intro__about {
+    font-weight: 400;
+    font-size: 20px;
+  }
+}
