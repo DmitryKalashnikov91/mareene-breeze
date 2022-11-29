@@ -1,15 +1,22 @@
+'use client';
 import './styles/globals.css';
 import Navbar from './Navbar';
 import React from 'react';
+
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
+
 export default function RootLayout({ children }) {
     return (
         <html>
             <head />
             <body>
-                <header>
-                    <Navbar />
-                </header>
-                {children}
+                <Provider store={store}>
+                    <header>
+                        <Navbar />
+                    </header>
+                    {children}
+                </Provider>
             </body>
         </html>
     );

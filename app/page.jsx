@@ -1,14 +1,14 @@
 'use client';
-
 import React, { useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import { useSelector } from 'react-redux';
 import Image from 'next/legacy/image';
 import Brands from './Brands';
 
 export default function App() {
     // state dep scroll
     const [state, setState] = React.useState(false);
-
+    const menu = useSelector((state) => state.menu.value);
     const logoRef = React.useRef(null);
     const aboutRef = React.useRef(null);
     const videoRef = React.useRef(null);
@@ -18,10 +18,12 @@ export default function App() {
         videoRef.current.playbackRate = 0.7; // video speed
         setState(true);
     }, []);
-
+    useEffect(() => {
+        setState(() => !state);
+    }, [menu]);
     // content dep state
     const changeContent = () => {
-        if (window.scrollY >= 0.7) {
+        if (window.scrollY >= 0.7 || menu) {
             setState(false);
         } else {
             setState(true);
@@ -37,7 +39,7 @@ export default function App() {
             <section className='intro'>
                 <div className='intro__media'>
                     <video
-                        src='/videoBg.mp4'
+                        src='/volny.mp4'
                         muted
                         preload='auto'
                         autoPlay
@@ -61,10 +63,8 @@ export default function App() {
                                     </h1>
                                 </div>
                             ) : (
-                                <div
-                                    className='.intro__content about mt-96 flex-row w-full'
-                                    ref={aboutRef}>
-                                    <p className='text-white relative text-3xl pt-40 px-24'>
+                                <div className='.intro__content about' ref={aboutRef}>
+                                    <p>
                                         <strong>Marine breeze</strong> - дилер подвесных лодочных
                                         моторов в России. Даже в это не простое время мы помогаем
                                         обновлять мощности нашим клиентам, осуществляя параллельный

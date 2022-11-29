@@ -11,6 +11,9 @@
   src: url("/fonts/Robotobold.ttf");
   font-weight: bold;
 }
+:root {
+  --index: calc(1vw + 1vh); 
+}
 
 html,
 body {
@@ -67,14 +70,12 @@ a {
   display: none;
 }
 .mobile-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 10%;
+  left: 5%;
   display: flex;
-align-items:center;
-justify-content: center;
-  width: 90vw;
   height: 40vh;
+  z-index: 10;
 }
 .mobile-menu ul {
   position: relative;
@@ -83,11 +84,16 @@ justify-content: center;
   align-items:center;
   justify-content: center;
   color: white;
+  padding-top: 7%;
 }
 
 .mobile-menu li {
-  padding-top: 2rem;
+  padding: 2rem;
+  display: flex;
+  align-items:center;
+  justify-content: center;
   font-size: 30px;
+  width: 90vw;
 }
 .intro__media {
   position: absolute;
@@ -107,41 +113,30 @@ justify-content: center;
   transform: translate(-50%, -50%);
 }
 .intro__content {
-  width: 370px;
-  height: 220px;
+  width: 400px;
+  height: 250px;
   position: relative;
   caret-color: transparent;
   display: flex;
-  margin-left: 30%;
+  margin-left: 35%;
   justify-content: center;
   margin-top: 30vh;
   z-index: 2;
 }
 
-.intro__content .img {
-  width: 60vw;
-  height: auto;
-}
-.intro__content .about {
-  position: relative;
-  color:white;
-  z-index: 10;
-  }
-
-
 .fade-enter .intro__content {
   opacity: 0;
 }
 .fade-enter-active .intro__content{
-  opacity: 1;
+  opacity: 0.8;
   animation: mymove 5s infinite;
 }
-.fade-exit .intro__content{
- opacity: 0;
+.fade-exit .intro__content {
+ opacity: 0.2;
 }
-/* .fade-exit-active .intro__content {
-  
-} */
+.fade-exit-active .intro__content {
+  opacity: 0;
+}
 .fade-enter-active .intro__content,
 .fade-exit-active .intro__content {
   transition: opacity 2000ms, transform 3000ms;
@@ -151,7 +146,7 @@ justify-content: center;
   to {width: 700px; height: 520px;}
 }
 .brands {
-  margin-top: 90%;
+  margin-top: 35%;
 }
 
 .brand-items {
@@ -168,13 +163,23 @@ justify-content: center;
 }
 .sub-title {
   position: relative;
-  margin: 15% 0 5% 0 ;
+  margin: 15% 0 0 0 ;
   z-index: 3;
   font-size: 26px;
   color: white;
   text-align: center;
 }
 
+.about {
+  position: relative;
+  z-index: 3;
+  color: white;
+  margin: 40% 10% 10% 10%;
+  padding-top: 150px;
+}
+.about p {
+  font-size: calc(var(--index)*1.2);
+}
 
 
 @media (max-width: 850px) {
@@ -185,6 +190,9 @@ justify-content: center;
     display: block;
     right: 5%;
     font-size: 18px;
+  }
+  .mobile-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.2)
   }
   @keyframes mymove {
     from {width: 50px; height: 20px;}
@@ -199,9 +207,14 @@ justify-content: center;
     max-width: 250px;
     height: 150px;
   }
+  .brands {
+    margin-top: 80%;
+  }
   
-  .intro__about {
+  .intro__content .about p{
+    margin-left: 0;
+    padding-left: 0;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 14px;
   }
 }

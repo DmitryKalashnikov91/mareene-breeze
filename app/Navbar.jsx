@@ -1,11 +1,14 @@
 'use client';
 import Link from 'next/link';
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleState } from './redux/slices/menuSlice';
 import MobileMenu from './MobileMenu';
 
 const Navbar = ({}) => {
-    const [active, setActive] = React.useState(false);
+    const menu = useSelector((state) => state.menu.value);
     const linksRef = React.useRef(null);
+    const dispatch = useDispatch();
     const navigation = [
         { id: 1, title: 'О нас', path: '#' },
         { id: 2, title: 'Бренды', path: '#partners' },
@@ -15,7 +18,7 @@ const Navbar = ({}) => {
     ];
     return (
         <nav className='intro__navigate'>
-            {!active ? (
+            {!menu ? (
                 <div className='nav-links' ref={linksRef}>
                     <ul>
                         {navigation.map(({ id, title, path }) => (
@@ -28,8 +31,8 @@ const Navbar = ({}) => {
             ) : (
                 <MobileMenu />
             )}
-            <div className='burger-btn' onClick={() => setActive(!active)}>
-                Меню
+            <div className='burger-btn' onClick={() => dispatch(toggleState())}>
+                {menu ? 'Скрыть' : 'Меню'}
             </div>
         </nav>
     );
