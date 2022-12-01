@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @font-face {
   font-family: Roboto;
@@ -19,7 +16,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  height: 200%;
+  height: 100vh;
   max-width: 100vw;
    font-family: 'Roboto', sans-serif, Helvetica Neue, sans-serif;
     background-color: rgb(5, 44, 69);
@@ -33,6 +30,9 @@ a {
 * {
   box-sizing: border-box;
 }
+li {
+  list-style-type: none;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -43,7 +43,7 @@ a {
     background: black;
   }
 }
-.intro__navigate ul {
+.navigate ul {
   position: fixed;
   display: flex;
   top: 5%;
@@ -115,18 +115,58 @@ a {
   transform: translate(-50%, -50%);
 }
 .intro__content {
+  position: fixed;
+  z-index: 3;
+  width: 75%;
+  height: 45%;
+  top: 30%;
+  left: 15%;
+}
+
+
+.img {
   width: 400px;
   height: 250px;
   position: relative;
-  caret-color: transparent;
-  display: flex;
-  margin-left: 35%;
-  justify-content: center;
-  margin-top: 30vh;
   z-index: 2;
+  transition: all 1000ms;
+  caret-color: transparent;
 }
 
-.fade-enter .intro__content {
+.logo-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 2000ms, transform 10  00ms;
+}
+.logo-exit {
+  opacity: 1;
+}
+.logo-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1000ms, transform 1000ms;
+}
+/* .img.active {
+  
+  opacity: 1;
+} */
+
+.about {
+  position: relative;
+  z-index: 2;
+  color: white;
+  opacity: 0;
+  transition: all 1000ms;
+
+}
+.about.active {
+  opacity: 1;
+}
+.about p {
+  font-size: calc(var(--index)*1.2);
+}
+
+/* .fade-enter .intro__content {
   opacity: 0;
 }
 .fade-enter-active .intro__content{
@@ -142,13 +182,13 @@ a {
 .fade-enter-active .intro__content,
 .fade-exit-active .intro__content {
   transition: opacity 2000ms, transform 3000ms;
-}
+} */
 @keyframes mymove {
   from {width: 200px; height: 120px;}
   to {width: 700px; height: 520px;}
 }
 .brands {
-  margin-top: 35%;
+  margin-top: 100%;
 }
 
 .brand-items {
@@ -172,16 +212,6 @@ a {
   text-align: center;
 }
 
-.about {
-  position: relative;
-  z-index: 2;
-  color: white;
-  margin: 40% 10% 10% 10%;
-  padding-top: 150px;
-}
-.about p {
-  font-size: calc(var(--index)*1.2);
-}
 
 
 @media (max-width: 850px) {
@@ -213,7 +243,7 @@ a {
     margin-top: 140%;
   }
   
-  .intro__content .about p{
+   .about p {
     margin-left: 0;
     padding-left: 0;
     font-weight: 400;

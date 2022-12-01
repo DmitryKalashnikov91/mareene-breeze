@@ -7,27 +7,42 @@ import Brands from './Brands';
 
 export default function App() {
     // state dep scroll
-    const [state, setState] = React.useState(false);
+    const [showLogo, setShowLogo] = React.useState(false);
+    const [showAbout, setShowAbout] = React.useState(false);
+
+    const [scrollY, setScrollY] = React.useState(0);
+
     const menu = useSelector((state) => state.menu.value);
     const logoRef = React.useRef(null);
     const aboutRef = React.useRef(null);
     const videoRef = React.useRef(null);
-    const nodeRef = state ? logoRef : aboutRef;
+    const nodeRef = React.useRef(null);
 
     useEffect(() => {
         videoRef.current.playbackRate = 0.7; // video speed
-        setState(true);
+        setShowLogo(true);
+        setShowAbout(false);
+        window.addEventListener('scroll', () => {
+            // document.body.style.cssText = `--scrollTop: ${window.scrollY}px`;
+            setScrollY(window.scrollY);
+        });
     }, []);
+    console.log(scrollY);
     useEffect(() => {
-        setState(() => !state);
+        setShowLogo(() => !showLogo);
+        setShowAbout(false);
     }, [menu]);
     // content dep state
     const changeContent = () => {
-        if (window.scrollY >= 0.7 || menu) {
-            setState(false);
+        if (scrollY > 1 || menu) {
+            setShowLogo(false);
+            setShowAbout(true);
+        } else if (scrollY < 660) {
+            setShowAbout(false);
         } else {
-            setState(true);
+            setShowLogo(true);
         }
+        return;
     };
 
     if (typeof window !== 'undefined') {
@@ -48,33 +63,36 @@ export default function App() {
                         poster='/poster.png'></video>
                 </div>
 
-                <SwitchTransition>
-                    <CSSTransition in={state} timeout={1000} key={state} classNames='fade'>
-                        <div ref={nodeRef}>
-                            {state ? (
-                                <div className='intro__content img'>
-                                    <h1>
-                                        <Image
-                                            src='/logo_marin.png'
-                                            className='img'
-                                            layout='fill'
-                                            alt='logo'
-                                            priority></Image>
-                                    </h1>
-                                </div>
-                            ) : (
-                                <div className='.intro__content about' ref={aboutRef}>
-                                    <p>
-                                        <strong>Marine breeze</strong> - дилер подвесных лодочных
-                                        моторов в России. Даже в это не простое время мы помогаем
-                                        обновлять мощности нашим клиентам, осуществляя параллельный
-                                        импорт.
-                                    </p>
-                                </div>
-                            )}
-                        </div>
+                {/* <SwitchTransition>
+                    <CSSTransition in={state} timeout={1000} key={state} classNames='fade'> */}
+
+                <div className='intro__content'>
+                    <CSSTransition in={showLogo} nodeRef={nodeRef} timeout={1000} classNames='logo'>
+                        {scrollY < 1 ? (
+                            <div className='img' ref={nodeRef}>
+                                <Image
+                                    src='/logo_marin.png'
+                                    className='img'
+                                    layout='fill'
+                                    alt='logo'
+                                    priority></Image>
+                            </div>
+                        ) : (
+                            <div
+                                className={scrollY < 660 ? 'about active' : 'about'}
+                                ref={aboutRef}>
+                                <p>
+                                    <strong>Marine breeze</strong> - дилер подвесных лодочных
+                                    моторов в России. Даже в это не простое время мы помогаем
+                                    обновлять мощности нашим клиентам, осуществляя параллельный
+                                    импорт.
+                                </p>
+                            </div>
+                        )}
                     </CSSTransition>
-                </SwitchTransition>
+                </div>
+                {/* </CSSTransition>
+                </SwitchTransition> */}
             </section>
             <Brands />
         </>

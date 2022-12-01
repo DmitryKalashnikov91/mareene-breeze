@@ -17,7 +17,7 @@ const Navbar = ({}) => {
         { id: 5, title: 'Контакты', path: '#' },
     ];
     return (
-        <nav className='intro__navigate'>
+        <nav className='navigate'>
             {!menu ? (
                 <div className='nav-links' ref={linksRef}>
                     <ul>
