@@ -190,6 +190,7 @@ li {
 
 }
 .about.active {
+  padding-top: 10%;
   opacity: 1;
 }
 .about p {
