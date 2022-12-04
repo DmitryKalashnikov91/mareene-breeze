@@ -116,9 +116,10 @@ li {
 }
 .intro__content {
   position: fixed;
+  
   z-index: 3;
   width: 75%;
-  height: 45%;
+  height: 75%;
   top: 30%;
   left: 15%;
 }
@@ -127,10 +128,13 @@ li {
 .img {
   width: 400px;
   height: 250px;
+  display: inline-block;
   position: relative;
+  left: 28%;
   z-index: 2;
   transition: all 1000ms;
   caret-color: transparent;
+  animation: mymove 5s cubic-bezier(.17,.67,.67,.96);
 }
 
 .logo-enter-active {
@@ -141,10 +145,36 @@ li {
 .logo-exit {
   opacity: 1;
 }
-.logo-exit-active {
+/* .logo-exit-active {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 1000ms, transform 1000ms;
+} */
+@keyframes mymove {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  /* 25% {
+    opacity: .5;
+    width: 300px;
+  height: 170px;
+  }
+  50% {
+    opacity: 1;
+    width: 420px;
+  height: 250px;
+  }
+  75% {
+    opacity: 0.5;
+    width: 500px;
+  height: 370px;
+  } */
+  100% {
+   
+    opacity: 1;
+   transform: scale(1.8);
+  }
 }
 /* .img.active {
   
@@ -183,12 +213,9 @@ li {
 .fade-exit-active .intro__content {
   transition: opacity 2000ms, transform 3000ms;
 } */
-@keyframes mymove {
-  from {width: 200px; height: 120px;}
-  to {width: 700px; height: 520px;}
-}
+
 .brands {
-  margin-top: 100%;
+  margin-top: 70%;
 }
 
 .brand-items {
@@ -226,21 +253,23 @@ li {
   .mobile-menu li:hover {
     background-color: rgba(255, 255, 255, 0.2)
   }
-  @keyframes mymove {
-    from {width: 50px; height: 20px;}
-    to {width: 250px; height: 150px;}
+  .img {
+    left: 5%;
   }
+  
 }
 
 @media (max-width: 600px) {
   .intro__content {
-    position: relative;
-    margin-left: 10%;;
-    max-width: 250px;
+  
+  }
+  .img {
+    left: 0;
+    width: 250px;
     height: 150px;
   }
   .brands {
-    margin-top: 140%;
+    margin-top: 180%;
   }
   
    .about p {

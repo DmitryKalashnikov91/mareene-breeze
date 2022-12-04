@@ -27,7 +27,6 @@ export default function App() {
             setScrollY(window.scrollY);
         });
     }, []);
-    console.log(scrollY);
     useEffect(() => {
         setShowLogo(() => !showLogo);
         setShowAbout(false);
@@ -37,7 +36,7 @@ export default function App() {
         if (scrollY > 1 || menu) {
             setShowLogo(false);
             setShowAbout(true);
-        } else if (scrollY < 660) {
+        } else if (scrollY < 200) {
             setShowAbout(false);
         } else {
             setShowLogo(true);
@@ -48,6 +47,7 @@ export default function App() {
     if (typeof window !== 'undefined') {
         window.addEventListener('scroll', changeContent); // scroll head
     }
+    console.log(menu);
 
     return (
         <>
@@ -68,18 +68,17 @@ export default function App() {
 
                 <div className='intro__content'>
                     <CSSTransition in={showLogo} nodeRef={nodeRef} timeout={1000} classNames='logo'>
-                        {scrollY < 1 ? (
+                        {(scrollY < 1) & !menu ? (
                             <div className='img' ref={nodeRef}>
                                 <Image
                                     src='/logo_marin.png'
-                                    className='img'
                                     layout='fill'
                                     alt='logo'
                                     priority></Image>
                             </div>
                         ) : (
                             <div
-                                className={scrollY < 660 ? 'about active' : 'about'}
+                                className={(scrollY < 200) & !menu ? 'about active' : 'about'}
                                 ref={aboutRef}>
                                 <p>
                                     <strong>Marine breeze</strong> - дилер подвесных лодочных
