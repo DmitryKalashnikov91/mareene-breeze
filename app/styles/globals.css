@@ -48,7 +48,7 @@ li {
   display: flex;
   top: 5%;
   right: 5%;
-  z-index: 2;
+  z-index: 5;
 }
 .nav-links li {
   color: white;
@@ -129,8 +129,8 @@ li {
 
 
 .img {
-  width: 400px;
-  height: 250px;
+  width: 320px;
+  height: 200px;
   display: inline-block;
   position: relative;
   z-index: 2;
