@@ -116,12 +116,15 @@ li {
 }
 .intro__content {
   position: fixed;
-  
+  top: 0;
+  left: 0;
   z-index: 3;
-  width: 75%;
-  height: 75%;
-  top: 30%;
-  left: 15%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
 }
 
 
@@ -130,7 +133,6 @@ li {
   height: 250px;
   display: inline-block;
   position: relative;
-  left: 25%;
   z-index: 2;
   transition: all 1000ms;
   caret-color: transparent;

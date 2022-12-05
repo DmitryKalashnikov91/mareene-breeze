@@ -47,7 +47,6 @@ export default function App() {
     if (typeof window !== 'undefined') {
         window.addEventListener('scroll', changeContent); // scroll head
     }
-    console.log(menu);
 
     return (
         <>
