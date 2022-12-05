@@ -6,7 +6,7 @@ import Brands from './Brands';
 import About from './About';
 
 export default function App() {
-    const [scrollY, setScrollY] = React.useState();
+    const [scrollY, setScrollY] = React.useState(0);
 
     const menu = useSelector((state) => state.menu.value);
 
@@ -14,7 +14,6 @@ export default function App() {
 
     useEffect(() => {
         videoRef.current.playbackRate = 0.7; // video speed
-
         window.addEventListener('scroll', () => {
             setScrollY(window.scrollY);
         });
