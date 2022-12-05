@@ -1,5 +1,6 @@
 'use client';
-import Link from 'next/link';
+// import Link from 'next/link';
+import { Link } from 'react-scroll';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleState } from './redux/slices/menuSlice';
@@ -10,11 +11,11 @@ const Navbar = ({}) => {
     const linksRef = React.useRef(null);
     const dispatch = useDispatch();
     const navigation = [
-        { id: 1, title: 'О нас', path: '#' },
-        { id: 2, title: 'Бренды', path: '#partners' },
-        { id: 3, title: 'Запчасти', path: '#' },
-        { id: 4, title: 'Доставка', path: '#' },
-        { id: 5, title: 'Контакты', path: '#' },
+        { id: 1, title: 'О нас', path: 'about' },
+        { id: 2, title: 'Бренды', path: 'partners' },
+        { id: 3, title: 'Запчасти', path: 'parts' },
+        { id: 4, title: 'Доставка', path: 'delivery' },
+        { id: 5, title: 'Контакты', path: 'contacts' },
     ];
     return (
         <nav className='navigate'>
@@ -23,7 +24,9 @@ const Navbar = ({}) => {
                     <ul>
                         {navigation.map(({ id, title, path }) => (
                             <li key={id}>
-                                <Link href={path}>{title}</Link>
+                                <Link activeClass='nav-active' spy={true} smooth={true} to={path}>
+                                    {title}
+                                </Link>
                             </li>
                         ))}
                     </ul>

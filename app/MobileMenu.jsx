@@ -9,6 +9,7 @@ const MobileMenu = () => {
         { id: 4, title: 'Доставка', path: '#' },
         { id: 5, title: 'Контакты', path: '#' },
     ];
+
     return (
         <>
             <nav className='mobile-menu'>

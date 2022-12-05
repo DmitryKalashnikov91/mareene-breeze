@@ -9,16 +9,21 @@ const Brands = () => {
         { id: 5, alt: 'Tohatsu', path: '/tohatsu.png', width: 380, height: 70 },
         { id: 6, alt: 'BRP', path: '/BRP.png', width: 300, height: 200 },
     ];
+    const handleClick = (e) => {
+        console.log(e.target);
+    };
 
     return (
         <>
-            <div className='brands'>
-                <h2 className='sub-title' id='partners'>
-                    Наши партнеры:
-                </h2>
+            <div className='brands' id='partners'>
+                <h2 className='sub-title'>Наши партнеры:</h2>
                 <div className='brand-items'>
                     {arrBrands.map(({ id, alt, path, width, height }) => (
-                        <div className='image' key={id}>
+                        <div
+                            type='button'
+                            className='image'
+                            key={id}
+                            onClick={(e) => handleClick(e)}>
                             <Image alt={alt} src={path} width={width} height={height} />
                         </div>
                     ))}
