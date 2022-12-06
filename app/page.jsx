@@ -11,12 +11,14 @@ export default function App() {
     const menu = useSelector((state) => state.menu.value);
 
     const videoRef = React.useRef(null);
-
-    useEffect(() => {
-        videoRef.current.playbackRate = 0.7; // video speed
+    if (window) {
         window.addEventListener('scroll', () => {
             setScrollY(window.scrollY);
         });
+    }
+
+    useEffect(() => {
+        videoRef.current.playbackRate = 0.7; // video speed
     }, []);
 
     return (
