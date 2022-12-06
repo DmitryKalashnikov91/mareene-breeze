@@ -15,8 +15,10 @@ const Brands = () => {
 
     return (
         <>
-            <div className='brands' id='partners'>
-                <h2 className='sub-title'>Наши партнеры:</h2>
+            <div className='brands'>
+                <h2 className='sub-title' id='partners'>
+                    Наши партнеры:
+                </h2>
                 <div className='brand-items'>
                     {arrBrands.map(({ id, alt, path, width, height }) => (
                         <div

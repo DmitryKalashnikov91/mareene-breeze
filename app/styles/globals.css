@@ -56,9 +56,14 @@ li {
   font-size: 18px;
   transition: all 400ms;
   overflow-wrap: unset;
+  caret-color: transparent;
 }
 .nav-links li:hover {
   transform: scale(1.2);
+}
+.nav-links a:hover {
+  cursor: pointer;
+  
 }
 .burger-btn {
   color: white;
@@ -66,7 +71,7 @@ li {
   display: flex;
   top: 5%;
   right: 10%;
-  z-index: 4;
+  z-index: 7;
   display: none;
 }
 .mobile-menu {
@@ -77,7 +82,7 @@ li {
   width: 100%;
   height: 100%;
   display: flex;
-  z-index: 3;
+  z-index: 5;
 }
 .mobile-menu ul {
   position: relative;
@@ -86,7 +91,7 @@ li {
   align-items:center;
   justify-content: center;
   color: white;
-  padding-top: 7%;
+  padding-top: 5%;
 }
 
 .mobile-menu li {
@@ -96,7 +101,9 @@ li {
   justify-content: center;
   font-size: 30px;
   width: 90vw;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
 .intro__media {
   position: absolute;
   left: 0;
@@ -146,10 +153,10 @@ li {
     transform: scale(1);
   }
  
-  90% {
+  80% {
    
     opacity: 1;
-   transform: scale(1.8);
+   transform: scale(1.7);
   }
   100% {
     opacity: 0;
@@ -177,7 +184,7 @@ li {
 
 .brands {
   position: relative;
-  margin-top: 70%;
+  margin-top: 120vh;
   z-index: 4;
 }
 
@@ -201,6 +208,7 @@ li {
 .sub-title {
   position: relative;
   margin: 15% 0 0 0 ;
+  padding-top: 7%;
   z-index: 2;
   font-size: 26px;
   color: white;
@@ -214,7 +222,27 @@ li {
   padding: 5% 10% 10% 10%;
   font-size: 18px;
 }
+.arrow-up {
+  position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 10;
+    border: none;
+    background: none;
+    border-radius: 5px;
+    caret-color: transparent;
+}
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color:rgb(47, 101, 135);
+}
+::-webkit-scrollbar-thumb {
+  background-color:rgba(127, 212, 255, 0.5);
+  border-radius: 25px;
+}
 
 @media (max-width: 850px) {
   .nav-links {
@@ -241,7 +269,8 @@ li {
     height: 150px;
   }
   .brands {
-    margin-top: 180%;
+    /* margin-top: 100vh;
+    padding-top: 10vh; */
   }
   
    .about p {

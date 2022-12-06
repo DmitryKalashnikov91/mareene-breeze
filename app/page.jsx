@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Image from 'next/legacy/image';
 import Brands from './Brands';
 import About from './About';
+import ArrowUp from './ArrowUp';
 
 export default function App() {
     const [scrollY, setScrollY] = React.useState(0);
@@ -11,14 +12,12 @@ export default function App() {
     const menu = useSelector((state) => state.menu.value);
 
     const videoRef = React.useRef(null);
-    if (window) {
-        window.addEventListener('scroll', () => {
-            setScrollY(window.scrollY);
-        });
-    }
 
     useEffect(() => {
         videoRef.current.playbackRate = 0.7; // video speed
+        window.addEventListener('scroll', () => {
+            setScrollY(window.scrollY);
+        });
     }, []);
 
     return (
@@ -52,6 +51,10 @@ export default function App() {
             </section>
             <Brands />
             <About />
+            <ArrowUp />
+            {/* <Parts />
+            <Delivery />
+            <Cotacts /> */}
         </>
     );
 }
