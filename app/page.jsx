@@ -39,7 +39,7 @@ export default function App() {
                             <Image src='/logo_marin.png' layout='fill' alt='logo' priority></Image>
                         </div>
                     ) : (
-                        <div className={(scrollY < 200) & !menu ? 'about active' : 'about'}>
+                        <div className={(scrollY < 350) & !menu ? 'about active' : 'about'}>
                             <p>
                                 <strong>Marine breeze</strong> - дилер подвесных лодочных моторов в
                                 России. Даже в это не простое время мы помогаем обновлять мощности

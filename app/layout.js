@@ -1,5 +1,5 @@
 'use client';
-import './styles/globals.css';
+import './styles/globals.scss';
 import Navbar from './Navbar';
 import React from 'react';
 

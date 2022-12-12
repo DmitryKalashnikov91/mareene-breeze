@@ -23,7 +23,7 @@ const ArrowUp = () => {
         <>
             {scrollTop ? (
                 <button className='arrow-up' onClick={scrollUp}>
-                    <Image src='/arrow-up.svg' alt='up' width={25} height={30} />
+                    <Image src='/arrow-up.svg' alt='up' width={30} height={40} />
                 </button>
             ) : null}
         </>
